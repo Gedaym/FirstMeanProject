@@ -8,20 +8,33 @@
     <script src="app.js"></script>
 </head>
 <body ng-app="FirstMeanProject" ng-controller='MainCtrl'>
-    <div ng-repeat='post in posts | orderBy: "-upvote"'>
-        <a ng-show="post.link" href="{{post.link}}">
-            {{post.title}}
-        </a>
-        <span ng-hide="post.link">
-            {{post.title}}
-        </span>
-        - upvotes : {{post.upvote}}
-        <span class="glyphicon glyphicon-thumbs-up" ng-click="addVote(post)"></span>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Choose your favorites songs
+                </h3>
+            </div>
+            <div class="panel-body" ng-repeat='post in posts | orderBy: "-upvote"'>
+                <a ng-show="post.link" href="{{post.link}}">
+                    {{post.title}}
+                </a>
+                <span ng-hide="post.link">
+                    {{post.title}}
+                </span>
+                - upvotes : {{post.upvote}}
+                <span class="glyphicon glyphicon-thumbs-up" ng-click="addVote(post)"></span>
+            </div>
+            <div class="panel-footer">
+                <form ng-submit="addPost()">
+                    <input type="text" class="form-control" placeholder="Title" ng-model="Mytitle"/>
+                    <input type="text" class="form-control" placeholder="Link" ng-model="Mylink"/>
+                    <button type="submit" class="btn btn-default">Add</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <form ng-submit="addPost()">
-        <input type="text" placeholder="Title" ng-model="Mytitle"/>
-        <input type="text" placeholder="Link" ng-model="Mylink"/>
-        <button type="submit">Post</button>
-    </form>
+    <div class="col-md-4"></div>
 </body>
 </html>
