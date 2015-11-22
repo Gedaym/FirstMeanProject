@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>First Mean application</title>
+    <script src="bower_components/angular/angular.js"></script>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="app.js"></script>
+</head>
+<body ng-app="FirstMeanProject" ng-controller='MainCtrl'>
+    <div ng-repeat='post in posts | orderBy: "-upvote"'>
+        <a ng-show="post.link" href="{{post.link}}">
+            {{post.title}}
+        </a>
+        <span ng-hide="post.link">
+            {{post.title}}
+        </span>
+        - upvotes : {{post.upvote}}
+        <span class="glyphicon glyphicon-thumbs-up" ng-click="addVote(post)"></span>
+    </div>
+    <form ng-submit="addPost()">
+        <input type="text" placeholder="Title" ng-model="Mytitle"/>
+        <input type="text" placeholder="Link" ng-model="Mylink"/>
+        <button type="submit">Post</button>
+    </form>
+</body>
+</html>
