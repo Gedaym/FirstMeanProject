@@ -6,8 +6,11 @@ var app=  angular.module('FirstMeanProject', []);
 
 app.controller('MainCtrl', [
     '$scope',
-    function($scope) {
-        $scope.posts= [
+    'posts',
+    function($scope, posts) {
+        $scope.posts = posts.posts;
+    }
+       /* $scope.posts= [
             {title: 'post 1',  upvote : 5},
             {title: 'post 2',  upvote : 3},
             {title: 'post 3',  upvote : 4}
@@ -27,5 +30,16 @@ app.controller('MainCtrl', [
         $scope.addVote = function(post) {
             post.upvote += 1;
         }
-    }
+    }*/
 ]);
+
+app.factory('posts', [function(){
+    var o = {
+        posts: [
+            {title: 'post 1',  upvote : 5},
+            {title: 'post 2',  upvote : 3},
+            {title: 'post 3',  upvote : 4}
+        ]
+    };
+    return o;
+}]);
